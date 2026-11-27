@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wubi-learning.example/schema/source.schema.json",
+  "title": "Wubi knowledge source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "sourceType",
+    "url",
+    "licenseStatus",
+    "projectUse",
+    "verificationStatus"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^S[0-9]{3,}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "publisher": {
+      "type": "string"
+    },
+    "edition": {
+      "type": "string"
+    },
+    "isbn": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "sourceType": {
+      "enum": [
+        "published_reference",
+        "open_source_input_method",
+        "reference_artwork_project",
+        "modified_input_method_dictionary",
+        "other"
+      ]
+    },
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "licenseStatus": {
+      "type": "string",
+      "minLength": 1
+    },
+    "projectUse": {
+      "enum": [
+        "manual_reference_only",
+        "rules_reference_only",
+        "cross_check_only",
+        "difference_detection_only",
+        "exclude_from_base_86",
+        "approved_data_source"
+      ]
+    },
+    "verificationStatus": {
+      "enum": [
+        "candidate",
+        "reviewed",
+        "approved",
+        "rejected"
+      ]
+    },
+    "repositoryCommit": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}
