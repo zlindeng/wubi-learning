@@ -17,6 +17,12 @@ describe("application routes", () => {
     expect(window.location.pathname).toBe("/lessons");
   });
 
+  it("opens the keyboard recognition exercise route", () => {
+    window.history.pushState({}, "", "/practice");
+    render(<App />);
+    expect(screen.getByRole("heading", { name: "键名找键位" })).toBeInTheDocument();
+  });
+
   it("shows a useful fallback for unknown routes", () => {
     window.history.pushState({}, "", "/unknown-page");
     render(<App />);
