@@ -16,6 +16,12 @@ describe("86 keyboard", () => {
     expect(screen.getByText("王 · 横区")).toBeInTheDocument();
   });
 
+  it("selects a key with Shift plus its physical letter key", () => {
+    render(<Keyboard />);
+    fireEvent.keyDown(window, { code: "KeyG", key: "G", shiftKey: true });
+    expect(screen.getByText("王 · 横区")).toBeInTheDocument();
+  });
+
   it("notifies the parent when a key is selected", () => {
     const onSelectKey = vi.fn();
     render(<Keyboard onSelectKey={onSelectKey} />);
