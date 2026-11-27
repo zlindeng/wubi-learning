@@ -6,6 +6,7 @@ import {
   Library,
   Settings2,
 } from "lucide-react";
+import { useEffect } from "react";
 import {
   BrowserRouter,
   Link,
@@ -14,6 +15,7 @@ import {
   Route,
   Routes,
   useLocation,
+  useNavigate,
 } from "react-router-dom";
 import { Keyboard } from "./components/Keyboard";
 import { PlaceholderPage } from "./pages/PlaceholderPage";
@@ -38,6 +40,28 @@ const pageNames: Record<string, string> = {
 
 function AppLayout() {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    function handleGlobalShortcut(event: globalThis.KeyboardEvent) {
+      const target = event.target;
+      const isEditing = target instanceof HTMLElement &&
+        (target.isContentEditable || target.closest("input, textarea, select, [contenteditable='true'], [role='textbox']"));
+      if (isEditing || event.isComposing || event.repeat || !event.ctrlKey || !event.shiftKey || event.altKey || event.metaKey) {
+        return;
+      }
+      const routes: Record<string, string> = {
+        Digit1: "/", Digit2: "/lessons", Digit3: "/practice",
+        Digit4: "/mistakes", Digit5: "/statistics", Digit6: "/settings",
+      };
+      const route = routes[event.code];
+      if (!route) return;
+      event.preventDefault();
+      navigate(route);
+    }
+    window.addEventListener("keydown", handleGlobalShortcut);
+    return () => window.removeEventListener("keydown", handleGlobalShortcut);
+  }, [navigate]);
   const currentPage = pageNames[location.pathname] ?? "页面不存在";
 
   return (
@@ -68,6 +92,11 @@ function AppLayout() {
           >
             <Settings2 size={18} /><span>设置</span>
           </NavLink>
+          <div className="shortcut-help" aria-label="全局快捷键">
+            <strong>键盘快捷键</strong>
+            <span><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>1–6</kbd></span>
+            <small>切换首页、课程、练习、错题、报告、设置</small>
+          </div>
           <div className="version-label">五笔 86 版 · MVP</div>
         </div>
       </aside>
