@@ -17,6 +17,7 @@ import {
 } from "react-router-dom";
 import { Keyboard } from "./components/Keyboard";
 import { PlaceholderPage } from "./pages/PlaceholderPage";
+import { PracticePage } from "./pages/PracticePage";
 
 const navigation = [
   { label: "学习首页", icon: Home, to: "/", end: true },
@@ -153,16 +154,7 @@ export function App() {
               />
             }
           />
-          <Route
-            path="practice"
-            element={
-              <PlaceholderPage
-                eyebrow="动手练习"
-                title="专项练习"
-                description="字根识别、拆字和编码练习将在对应知识数据核验后逐步开放。"
-              />
-            }
-          />
+          <Route path="practice" element={<PracticePage />} />
           <Route
             path="mistakes"
             element={
