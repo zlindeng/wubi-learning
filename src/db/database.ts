@@ -18,7 +18,7 @@ export class WubiDatabase extends Dexie {
     this.version(1).stores({
       lessonProgress: "&lessonId,status,updatedAt",
       exerciseAttempts: "++id,exerciseId,lessonId,answeredAt,isCorrect",
-      mistakes: "&exerciseId,lastWrongAt,wrongCount,resolvedAt",
+      mistakes: "&exerciseId,lastWrongAt,wrongCount",
       settings: "&key,updatedAt",
     });
   }
