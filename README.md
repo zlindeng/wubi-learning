@@ -40,6 +40,7 @@
 | [来源登记](docs/SOURCE_REGISTER.md) | 候选资料、来源用途和版权边界 |
 | [数据 Schema](docs/DATA_SCHEMA.md) | 知识数据结构和核验状态 |
 | [数据目录说明](data/README.md) | 数据文件组织与录入规则 |
+| [Phase 0 进度](docs/PHASE0_PROGRESS.md) | 知识数据准备进度与待办 |
 
 ## 本地开发
 
