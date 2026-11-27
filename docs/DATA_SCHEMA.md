@@ -47,7 +47,7 @@ data/
 - `glyph`：规范展示字形。
 - `variants`：同一字根的可接受字形变体；只有经核验后填写。
 - `key`：对应字母键。
-- `area`：五区之一。
+- `area`：`horizontal`、`vertical`、`left_falling`、`dot`、`turning` 五区之一。
 - `position`：区位号，例如两位数字字符串；待键盘图核验后填写。
 - `category`：普通字根、键名字根、成字字根。
 - `mnemonicText`：助记文本，需记录其来源/自编状态。
