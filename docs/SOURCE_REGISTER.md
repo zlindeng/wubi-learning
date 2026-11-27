@@ -123,3 +123,26 @@
 ## 6. 25 键候选审计补充
 
 新增 S006–S008 作为候选清单、常见形体和口诀的交叉参考。完整差异见 [25 键字根候选总审计](ROOTS_CANDIDATE_AUDIT.md)。这三项来源均未获准整表复制；它们不能替代 S001 附录 E 的逐键核对，也不能单独使任何候选字根达到 verified。
+
+### S006 — 0564bbs 86 版五笔字根表
+- 在线资料：[五笔字根表 25 个键位](https://www.0564bbs.cn/wubi/roots/)
+- 用途：候选字根展示、键位和取码规则差异发现。
+- 限制：页面对一些键只列简化形体或口诀标签；不可据此认定完整。
+- 项目用途：`candidate_comparison_only`。状态：`candidate`。
+
+### S007 — Benber 86 版字根入门图
+- 在线资料：[字根图](https://wubi.benber.net/guide/roots)
+- 页面明确说明其展示的是入门常用形体，不保证穷尽所有变体；区分键名、字根和一级简码。
+- 项目用途：`candidate_comparison_only`。状态：`candidate`。
+
+### S008 — 千千秀字 86 版字根表与口诀
+- 在线资料：[五笔字根表](https://www.qqxiuzi.cn/zh/wubi.htm)
+- 用途：86 版键位、口诀与术语的辅助交叉核验。
+- 限制：口诀不是完整字根清单；未取得内容再分发授权。
+- 项目用途：`mnemonic_cross_check_only`。状态：`candidate`。
+
+### S009 — 葡萄枝导航 86 版五笔字根表
+- 在线资料：[86 版五笔键盘/一级简码与键位练习](https://www.ptz123.com/wubi-table)
+- 用途：25 键常见字根、键名、一级简码及拆分规则的候选比较。
+- 限制：页面提供常用字根参考，不等同于官方完整字根全集；未取得整表再分发授权。
+- 项目用途：`candidate_comparison_only`。状态：`candidate`。
