@@ -9,7 +9,7 @@
 - 新增第一个真实学习垂直切片：键名找键位练习。题目仅从已核验的 25 个键名与键位映射生成，不使用未核验的完整字根清单。
 - 练习区域通过物理键盘事件的 `event.code` 识别字母键，并忽略输入法组合输入和 Ctrl/Alt/Meta 组合键；作答后显示即时正误反馈。
 - 每题使用稳定的 `keyboard-key:<字母>` exerciseId，答题记录写入 Dexie；错答聚合到错题记录，答对会解除该题未解决的错题。
-- 定义首个练习单元 ID：`keyboard-key-recognition`。每次作答后更新本地学习进度；累计答对全部 25 个不同键位后标记为 mastered。
+- 定义首个练习单元 ID：`keyboard-key-recognition`。每次作答后更新本地学习进度；累计答对全部 25 个不同键位后标记为 mastered。页面启动时从 IndexedDB 恢复正确识别数量，刷新后继续显示进度。
 - 增加按 lessonId 查询答题记录的 Repository 方法，并为练习正确作答、输入法组合事件及路由增加测试。
 
 - 初始化 Vite + React + TypeScript strict 工程配置。
