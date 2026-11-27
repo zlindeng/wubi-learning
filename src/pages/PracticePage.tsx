@@ -108,6 +108,7 @@ export function PracticePage() {
     if (
       isEditing ||
       event.repeat ||
+      event.isComposing ||
       event.altKey ||
       event.ctrlKey ||
       event.metaKey ||
@@ -123,6 +124,22 @@ export function PracticePage() {
       void submitAnswer(letter);
     }
   }
+
+  useEffect(() => {
+    function handlePracticeShortcut(event: globalThis.KeyboardEvent) {
+      const target = event.target;
+      const isEditing = target instanceof HTMLElement &&
+        (target.isContentEditable || target.closest("input, textarea, select, [contenteditable='true'], [role='textbox']"));
+      if (isEditing || event.isComposing || event.repeat || !event.shiftKey ||
+          event.ctrlKey || event.altKey || event.metaKey || event.code !== "Enter") return;
+      if (answerState !== null && !isSaving) {
+        event.preventDefault();
+        nextQuestion();
+      }
+    }
+    window.addEventListener("keydown", handlePracticeShortcut);
+    return () => window.removeEventListener("keydown", handlePracticeShortcut);
+  }, [answerState, isSaving, question.key]);
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
@@ -200,10 +217,10 @@ export function PracticePage() {
         {saveError && <p className="practice-error" role="alert">{saveError}</p>}
 
         {answerState === null ? (
-          <p className="practice-instruction">无需点击练习区域，直接按实体键盘上的字母键作答。答题后会立即显示反馈。</p>
+          <p className="practice-instruction">直接按实体键盘上的字母键作答。答题后按 Shift + Enter 进入下一题。</p>
         ) : (
           <button className="primary-action practice-next" disabled={isSaving} onClick={nextQuestion} type="button">
-            {isSaving ? "正在保存…" : "下一题"}
+            {isSaving ? "正在保存…" : <>下一题 <kbd>Shift</kbd> + <kbd>Enter</kbd></> }
             <RotateCcw size={15} />
           </button>
         )}
