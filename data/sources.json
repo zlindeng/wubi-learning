@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "S001",
+      "title": "五笔字型学用查词典（经典畅销版）",
+      "authors": [
+        "李宛新"
+      ],
+      "publisher": "清华大学出版社",
+      "edition": "2014年7月第1版",
+      "isbn": "978-7-302-36599-0",
+      "url": "https://www.tup.tsinghua.edu.cn/upload/books/yz/056601-01.pdf",
+      "sourceType": "published_reference",
+      "scope": [
+        "86/98 version comparison",
+        "86 root keyboard chart",
+        "character decomposition",
+        "character codes",
+        "abbreviated codes"
+      ],
+      "licenseStatus": "all-rights-reserved-assume-no-redistribution",
+      "projectUse": "manual_reference_only",
+      "verificationStatus": "candidate",
+      "notes": "该书同时包含86版与98版，逐条查阅必须确认使用86版栏目。不可批量复制书中表格、图片或长段文字。"
+    },
+    {
+      "id": "S002",
+      "title": "五笔字型输入法的方法和原则（章节 PDF）",
+      "authors": [],
+      "publisher": "清华大学出版社",
+      "edition": "online chapter PDF",
+      "url": "https://www.tup.tsinghua.edu.cn/upload/books/yz/051824-01.pdf",
+      "sourceType": "published_reference",
+      "scope": [
+        "key-name rules",
+        "character-root rules",
+        "single-character coding",
+        "identification code"
+      ],
+      "licenseStatus": "all-rights-reserved-assume-no-redistribution",
+      "projectUse": "rules_reference_only",
+      "verificationStatus": "candidate",
+      "notes": "用于规则理解和交叉核验，不替代完整86版字根表或逐字编码表。"
+    },
+    {
+      "id": "S003",
+      "title": "Rime 五笔输入方案",
+      "authors": [
+        "Rime contributors"
+      ],
+      "publisher": "rime/rime-wubi GitHub repository",
+      "edition": "repository master; pin commit before any data use",
+      "url": "https://github.com/rime/rime-wubi",
+      "sourceType": "open_source_input_method",
+      "scope": [
+        "86 input method schema",
+        "candidate code table cross-check"
+      ],
+      "licenseStatus": "LGPL-3.0 repository license; upstream ibus-table data provenance requires separate review",
+      "projectUse": "cross_check_only",
+      "verificationStatus": "candidate",
+      "notes": "README identifies the scheme as Wubi 86 and says the code table derives from ibus-table. Do not bulk import until upstream provenance and redistribution obligations are reviewed."
+    },
+    {
+      "id": "S004",
+      "title": "wubi-kb: 五笔字型86版五笔字根表绘制项目",
+      "authors": [
+        "riku-ri"
+      ],
+      "publisher": "GitHub repository",
+      "edition": "repository; pin commit before use",
+      "url": "https://github.com/riku-ri/wubi-kb",
+      "sourceType": "reference_artwork_project",
+      "scope": [
+        "root chart layout comparison",
+        "font/license investigation"
+      ],
+      "licenseStatus": "font and generated artwork require separate review; repository notes AR PL UMing font modifications",
+      "projectUse": "difference_detection_only",
+      "verificationStatus": "candidate",
+      "notes": "Project explicitly notes its rendered chart may differ from commonly used root charts; not a sole authoritative mapping source."
+    },
+    {
+      "id": "S005",
+      "title": "cof86: Rime 五笔86扩展码表",
+      "authors": [
+        "Cof-Lee"
+      ],
+      "publisher": "limaofu/cof86 GitHub repository",
+      "edition": "repository; pin commit before use",
+      "url": "https://github.com/limaofu/cof86",
+      "sourceType": "modified_input_method_dictionary",
+      "scope": [
+        "extension/version difference research"
+      ],
+      "licenseStatus": "repository LICENSE is MIT; upstream data rights not independently established",
+      "projectUse": "exclude_from_base_86",
+      "verificationStatus": "candidate",
+      "notes": "README says this modifies traditional 86 and adds traditional-character roots. Not a clean traditional 86 baseline."
+    }
+  ],
+  "policy": "Candidate sources are not automatically approved for data extraction or redistribution."
+}
