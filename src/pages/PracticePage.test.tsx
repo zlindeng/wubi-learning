@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { PracticePage } from "./PracticePage";
 import { keyboardKeys } from "../data/keyboard";
 import { db } from "../db/database";
-import { progressRepository } from "../repositories";
+import { attemptRepository, mistakeRepository, progressRepository } from "../repositories";
 
 describe("PracticePage", () => {
   beforeEach(async () => {
@@ -30,6 +30,41 @@ describe("PracticePage", () => {
     await waitFor(async () => {
       const progress = await progressRepository.get("keyboard-key-recognition");
       expect(progress?.status).toBe("learning");
+      expect(screen.getByText("1 / 25")).toBeInTheDocument();
+    });
+  });
+
+  it("records a wrong key as a mistake", async () => {
+    render(<PracticePage />);
+    const keyName = screen.getByText(
+      (content, element) => element?.tagName === "STRONG" && keyboardKeys.some((key) => key.keyName === content),
+    ).textContent;
+    const expectedKey = keyboardKeys.find((key) => key.keyName === keyName)!;
+    const wrongKey = keyboardKeys.find((key) => key.key !== expectedKey.key)!;
+    fireEvent.keyDown(screen.getByRole("region", { name: "五笔键位认知练习" }), {
+      code: `Key${wrongKey.key}`,
+      key: wrongKey.key.toLowerCase(),
+    });
+
+    expect(await screen.findByText("再记一下")).toBeInTheDocument();
+    await waitFor(async () => {
+      const mistakes = await mistakeRepository.listUnresolved();
+      expect(mistakes).toHaveLength(1);
+      expect(mistakes[0].exerciseId).toBe(`keyboard-key:${expectedKey.key}`);
+    });
+  });
+
+  it("restores the number of correctly recognized keys after remount", async () => {
+    await attemptRepository.record({
+      exerciseId: "keyboard-key:G",
+      lessonId: "keyboard-key-recognition",
+      submittedAnswer: "G",
+      isCorrect: true,
+      answeredAt: Date.now(),
+    });
+
+    render(<PracticePage />);
+    await waitFor(() => {
       expect(screen.getByText("1 / 25")).toBeInTheDocument();
     });
   });
