@@ -37,6 +37,9 @@
 | [技术设计](docs/TECHNICAL_DESIGN.md) | 技术栈、架构边界、数据模型、输入处理与持久化 |
 | [开发计划](docs/DEVELOPMENT_PLAN.md) | MVP 优先级、阶段拆分、交付与 AI Agent 协作规范 |
 | [数据质量规范](docs/DATA_QUALITY.md) | 86 版知识数据来源、校验、版本与发布要求 |
+| [来源登记](docs/SOURCE_REGISTER.md) | 候选资料、来源用途和版权边界 |
+| [数据 Schema](docs/DATA_SCHEMA.md) | 知识数据结构和核验状态 |
+| [数据目录说明](data/README.md) | 数据文件组织与录入规则 |
 
 ## 本地开发
 
