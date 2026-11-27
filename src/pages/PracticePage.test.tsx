@@ -69,14 +69,45 @@ describe("PracticePage", () => {
     });
   });
 
-  it("does not treat input-method composition as an answer", () => {
+  it("accepts physical key codes even when an input method is composing", async () => {
     render(<PracticePage />);
-    const practiceArea = screen.getByRole("region", { name: "五笔键位认知练习" });
-    fireEvent.keyDown(practiceArea, {
-      code: "KeyA",
-      key: "a",
+    const keyName = screen.getByText(
+      (content, element) => element?.tagName === "STRONG" && keyboardKeys.some((key) => key.keyName === content),
+    ).textContent;
+    const expectedKey = keyboardKeys.find((key) => key.keyName === keyName)!;
+
+    fireEvent.keyDown(window, {
+      code: `Key${expectedKey.key}`,
+      key: expectedKey.key.toLowerCase(),
       isComposing: true,
     });
+
+    expect(await screen.findByText("正确！")).toBeInTheDocument();
+  });
+
+  it("receives keyboard input without requiring focus on the practice card", async () => {
+    render(<PracticePage />);
+    const keyName = screen.getByText(
+      (content, element) => element?.tagName === "STRONG" && keyboardKeys.some((key) => key.keyName === content),
+    ).textContent;
+    const expectedKey = keyboardKeys.find((key) => key.keyName === keyName)!;
+
+    fireEvent.keyDown(window, {
+      code: `Key${expectedKey.key}`,
+      key: expectedKey.key.toLowerCase(),
+    });
+
+    expect(await screen.findByText("正确！")).toBeInTheDocument();
+  });
+
+  it("does not capture typing inside editable controls", () => {
+    render(<PracticePage />);
+    const input = document.createElement("input");
+    document.body.append(input);
+
+    fireEvent.keyDown(input, { code: "KeyA", key: "a" });
+
     expect(screen.queryByRole("status")).not.toBeInTheDocument();
+    input.remove();
   });
 });
