@@ -1,6 +1,5 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://wubi-learning.example/schema/root.schema.json",
   "title": "Wubi 86 root",
   "type": "object",
   "additionalProperties": false,
@@ -44,9 +43,9 @@
       "enum": [
         "horizontal",
         "vertical",
-        "撇",
-        "捺",
-        "折"
+        "left_falling",
+        "dot",
+        "turning"
       ]
     },
     "position": {
