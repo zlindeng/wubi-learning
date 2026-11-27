@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { getKeyboardRowKeys, keyboardRows, type KeyboardKey } from "../data/keyboard";
+import { useEffect, useState } from "react";
+import { getKeyboardRowKeys, keyboardRows, keyboardKeys, type KeyboardKey } from "../data/keyboard";
+
+const keyboardKeysByCode = new Map(keyboardKeys.map((key) => [key.key, key]));
 
 interface KeyboardProps {
   onSelectKey?: (key: KeyboardKey) => void;
@@ -7,6 +9,23 @@ interface KeyboardProps {
 
 export function Keyboard({ onSelectKey }: KeyboardProps) {
   const [selectedKey, setSelectedKey] = useState<KeyboardKey | null>(null);
+
+  useEffect(() => {
+    function handleKeyDown(event: globalThis.KeyboardEvent) {
+      if (!event.shiftKey || event.ctrlKey || event.altKey || event.metaKey ||
+          event.isComposing || event.repeat || !/^Key[A-Y]$/.test(event.code)) return;
+      const target = event.target;
+      if (target instanceof HTMLElement &&
+          (target.isContentEditable || target.closest("input, textarea, select, [contenteditable='true'], [role='textbox']'))) return;
+      const key = keyboardKeysByCode.get(event.code.slice(3));
+      if (!key) return;
+      event.preventDefault();
+      setSelectedKey(key);
+      onSelectKey?.(key);
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onSelectKey]);
 
   function selectKey(key: KeyboardKey) {
     setSelectedKey(key);
@@ -54,7 +73,7 @@ export function Keyboard({ onSelectKey }: KeyboardProps) {
           <p>选择一个键位，查看键名与所属分区。</p>
         )}
       </div>
-      <p className="keyboard-note">当前展示已核验的 25 个键位骨架；完整字根数据尚未接入。</p>
+      <p className="keyboard-note">按 <kbd>Shift</kbd> + 字母键可选择键位；当前展示已核验的 25 个键位骨架，完整字根数据尚未接入。</p>
     </section>
   );
 }
