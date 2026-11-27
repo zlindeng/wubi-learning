@@ -200,7 +200,7 @@ export function PracticePage() {
         {saveError && <p className="practice-error" role="alert">{saveError}</p>}
 
         {answerState === null ? (
-          <p className="practice-instruction">点击练习区域后，直接按键盘字母作答。答题后会立即显示反馈。</p>
+          <p className="practice-instruction">无需点击练习区域，直接按实体键盘上的字母键作答。答题后会立即显示反馈。</p>
         ) : (
           <button className="primary-action practice-next" disabled={isSaving} onClick={nextQuestion} type="button">
             {isSaving ? "正在保存…" : "下一题"}
