@@ -150,6 +150,24 @@
       "projectUse": "mnemonic_cross_check_only",
       "verificationStatus": "candidate",
       "notes": "页面给出86版五区键位与助记口诀，说明键名和同键一级字根概念；不单独作为完整字根数据源。"
+    },
+    {
+      "id": "S009",
+      "title": "五笔字根表 86 版 - 25 键字根口诀与反查",
+      "authors": [],
+      "publisher": "葡萄枝导航",
+      "edition": "online reference; accessed 2026-11-27",
+      "url": "https://www.ptz123.com/wubi-table",
+      "sourceType": "online_learning_reference",
+      "scope": [
+        "86 root-key common-shape comparison",
+        "mnemonic and level-1-code cross-check",
+        "version-boundary warning"
+      ],
+      "licenseStatus": "redistribution rights not established",
+      "projectUse": "candidate_comparison_only",
+      "verificationStatus": "candidate",
+      "notes": "页面标注86版，提供25键常用字根、键名、一级简码及拆分规则；站点自述为常用字根表，不作为官方完整字根全集或可再分发授权。"
     }
   ],
   "policy": "Candidate sources are not automatically approved for data extraction or redistribution."
