@@ -38,6 +38,9 @@
 | [开发计划](docs/DEVELOPMENT_PLAN.md) | MVP 优先级、阶段拆分、交付与 AI Agent 协作规范 |
 | [数据质量规范](docs/DATA_QUALITY.md) | 86 版知识数据来源、校验、版本与发布要求 |
 | [来源登记](docs/SOURCE_REGISTER.md) | 候选资料、来源用途和版权边界 |
+| [键盘布局核验](docs/KEYBOARD_LAYOUT_VERIFICATION.md) | 五区、25 键、区位号及键名核验 |
+| [G 键审计](docs/G_KEY_ROOTS_AUDIT.md) | G 键候选字根及差异 |
+| [25 键候选审计](docs/ROOTS_CANDIDATE_AUDIT.md) | 25 键候选索引、差异与核验矩阵 |
 | [数据 Schema](docs/DATA_SCHEMA.md) | 知识数据结构和核验状态 |
 | [数据目录说明](data/README.md) | 数据文件组织与录入规则 |
 | [Phase 0 进度](docs/PHASE0_PROGRESS.md) | 知识数据准备进度与待办 |
