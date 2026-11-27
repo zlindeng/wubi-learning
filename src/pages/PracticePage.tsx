@@ -1,4 +1,4 @@
-import { useEffect, useState, type KeyboardEvent } from "react";
+import { useEffect, useState } from "react";
 import { CheckCircle2, RotateCcw, XCircle } from "lucide-react";
 import { attemptRepository, mistakeRepository, progressRepository } from "../repositories";
 import { keyboardKeys, type KeyboardKey } from "../data/keyboard";
@@ -100,9 +100,13 @@ export function PracticePage() {
     }
   }
 
-  function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
+  function handleKeyDown(event: globalThis.KeyboardEvent) {
+    const target = event.target;
+    const isEditing = target instanceof HTMLElement &&
+      (target.isContentEditable || target.closest("input, textarea, select, [contenteditable='true'], [role='textbox']"));
+
     if (
-      event.nativeEvent.isComposing ||
+      isEditing ||
       event.repeat ||
       event.altKey ||
       event.ctrlKey ||
@@ -119,6 +123,11 @@ export function PracticePage() {
       void submitAnswer(letter);
     }
   }
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [answerState, isSaving, question.key]);
 
   function nextQuestion() {
     setQuestion((current) => chooseQuestion(current.key));
@@ -142,9 +151,6 @@ export function PracticePage() {
       <section
         aria-label="五笔键位认知练习"
         className="practice-card"
-        onKeyDown={handleKeyDown}
-        tabIndex={0}
-        autoFocus
       >
         <div className="practice-meta">
           <span>86 版 · 键位识别</span>
