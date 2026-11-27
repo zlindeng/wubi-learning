@@ -6,6 +6,10 @@ export const attemptRepository = {
     return db.exerciseAttempts.add(attempt);
   },
 
+  listByLesson(lessonId: string): Promise<ExerciseAttempt[]> {
+    return db.exerciseAttempts.where("lessonId").equals(lessonId).toArray();
+  },
+
   listByExercise(exerciseId: string): Promise<ExerciseAttempt[]> {
     return db.exerciseAttempts
       .where("exerciseId")
