@@ -20,6 +20,8 @@
 - 建立四类 Repository，页面和组件不需要直接访问 Dexie 表。
 - 错题按 exerciseId 聚合重复答错次数，并支持标记已复习。
 - 为 Vitest 增加 fake-indexeddb，并补充数据库 Repository CRUD、索引查询和错题聚合测试。
+- 建立 Zustand 练习会话 Store，管理当前练习 ID、输入内容、活动/完成状态及时间戳。
+- 为练习会话开始、输入更新、完成、清理和非法状态转换增加单元测试。
 
 ## 数据层约定
 
@@ -44,5 +46,5 @@
 
 1. 在本地安装依赖并生成 lockfile，执行 typecheck、test、build。
 2. 修复首次安装验证发现的问题。
-3. 建立 Zustand 最小客户端状态，并明确其与 IndexedDB Repository 的职责边界。
-4. 开始第一个真实学习功能前，继续完成对应知识数据核验。
+3. 在本地安装依赖并执行 typecheck、test、build，修复发现的问题。
+4. 开始第一个真实学习功能前，继续完成对应知识数据核验；Store 暂不接入未经核验的练习题。
