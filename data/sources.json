@@ -168,6 +168,28 @@
       "projectUse": "candidate_comparison_only",
       "verificationStatus": "candidate",
       "notes": "页面标注86版，提供25键常用字根、键名、一级简码及拆分规则；站点自述为常用字根表，不作为官方完整字根全集或可再分发授权。"
+    },
+    {
+      "id": "S010",
+      "title": "五笔字型速学速查词典",
+      "authors": [
+        "李宛新"
+      ],
+      "publisher": "清华大学出版社",
+      "edition": "2018年1月第1版",
+      "isbn": "978-7-302-48952-8",
+      "url": "https://www.tup.com.cn/upload/books/yz/074387-01.pdf",
+      "sourceType": "published_reference",
+      "scope": [
+        "86/98 version comparison",
+        "character decomposition",
+        "character codes",
+        "86 root keyboard chart"
+      ],
+      "licenseStatus": "all-rights-reserved-assume-no-redistribution",
+      "projectUse": "manual_reference_only",
+      "verificationStatus": "candidate",
+      "notes": "出版社 PDF 的使用说明明确正文按表格分别列出86版和98版字根及编码，并说明第一行为86版、第二行为98版；可用于人工逐字核对。不可批量复制书中表格、图片或长段文字。"
     }
   ],
   "policy": "Candidate sources are not automatically approved for data extraction or redistribution."
