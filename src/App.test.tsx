@@ -17,6 +17,24 @@ describe("application routes", () => {
     expect(window.location.pathname).toBe("/lessons");
   });
 
+  it("switches pages with Ctrl+Shift+number", () => {
+    window.history.pushState({}, "", "/");
+    render(<App />);
+    fireEvent.keyDown(window, { code: "Digit3", ctrlKey: true, shiftKey: true });
+    expect(screen.getByRole("heading", { name: "键名找键位" })).toBeInTheDocument();
+    expect(window.location.pathname).toBe("/practice");
+  });
+
+  it("does not navigate while an editable field is focused", () => {
+    window.history.pushState({}, "", "/");
+    render(<App />);
+    const input = document.createElement("input");
+    document.body.append(input);
+    fireEvent.keyDown(input, { code: "Digit3", ctrlKey: true, shiftKey: true });
+    expect(window.location.pathname).toBe("/");
+    input.remove();
+  });
+
   it("opens the keyboard recognition exercise route", () => {
     window.history.pushState({}, "", "/practice");
     render(<App />);
