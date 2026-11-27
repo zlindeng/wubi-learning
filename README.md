@@ -45,6 +45,7 @@
 | [数据 Schema](docs/DATA_SCHEMA.md) | 知识数据结构和核验状态 |
 | [数据目录说明](data/README.md) | 数据文件组织与录入规则 |
 | [Phase 0 进度](docs/PHASE0_PROGRESS.md) | 知识数据准备进度与待办 |
+| [Phase 1 进度](docs/PHASE1_PROGRESS.md) | 工程初始化、原型交付与验证状态 |
 
 ## 本地开发
 
