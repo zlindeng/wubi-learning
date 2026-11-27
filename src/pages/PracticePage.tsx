@@ -103,6 +103,7 @@ export function PracticePage() {
   function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
     if (
       event.nativeEvent.isComposing ||
+      event.repeat ||
       event.altKey ||
       event.ctrlKey ||
       event.metaKey ||
