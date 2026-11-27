@@ -30,6 +30,7 @@ describe("PracticePage", () => {
     await waitFor(async () => {
       const progress = await progressRepository.get("keyboard-key-recognition");
       expect(progress?.status).toBe("learning");
+      expect(screen.getByText("1 / 25")).toBeInTheDocument();
     });
   });
 
