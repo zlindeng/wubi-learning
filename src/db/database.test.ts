@@ -76,6 +76,9 @@ describe("local repositories", () => {
     await expect(mistakeRepository.listUnresolved()).resolves.toHaveLength(1);
     await expect(mistakeRepository.resolve("exercise-01", 300)).resolves.toBe(true);
     await expect(mistakeRepository.listUnresolved()).resolves.toHaveLength(0);
+
+    await mistakeRepository.recordWrongAnswer("exercise-01", "C", 400);
+    await expect(mistakeRepository.listUnresolved()).resolves.toHaveLength(1);
     await expect(mistakeRepository.resolve("missing")).resolves.toBe(false);
   });
 
