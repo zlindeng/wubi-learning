@@ -46,7 +46,8 @@
         "open_source_input_method",
         "reference_artwork_project",
         "modified_input_method_dictionary",
-        "other"
+        "other",
+        "online_learning_reference"
       ]
     },
     "scope": {
@@ -66,7 +67,9 @@
         "cross_check_only",
         "difference_detection_only",
         "exclude_from_base_86",
-        "approved_data_source"
+        "approved_data_source",
+        "candidate_comparison_only",
+        "mnemonic_cross_check_only"
       ]
     },
     "verificationStatus": {
