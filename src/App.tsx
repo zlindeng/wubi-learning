@@ -1,4 +1,4 @@
-import { BookOpen, ChartNoAxesColumn, Home, Keyboard as KeyboardIcon, Library, Settings2 } from "lucide-react";
+import { BookOpen, BarChart3, Home, Keyboard as KeyboardIcon, Library, Settings2 } from "lucide-react";
 import { Keyboard } from "./components/Keyboard";
 
 const navigation = [
