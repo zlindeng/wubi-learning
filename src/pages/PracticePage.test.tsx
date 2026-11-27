@@ -34,6 +34,20 @@ describe("PracticePage", () => {
     });
   });
 
+  it("moves to the next question with Shift+Enter", async () => {
+    render(<PracticePage />);
+    const keyName = screen.getByText(
+      (content, element) => element?.tagName === "STRONG" && keyboardKeys.some((key) => key.keyName === content),
+    ).textContent;
+    const expectedKey = keyboardKeys.find((key) => key.keyName === keyName)!;
+    fireEvent.keyDown(window, { code: `Key${expectedKey.key}`, key: expectedKey.key.toLowerCase() });
+    expect(await screen.findByText("正确！")).toBeInTheDocument();
+
+    fireEvent.keyDown(window, { code: "Enter", key: "Enter", shiftKey: true });
+    expect(screen.queryByText("正确！")).not.toBeInTheDocument();
+    expect(screen.getByText("等待输入")).toBeInTheDocument();
+  });
+
   it("records a wrong key as a mistake", async () => {
     render(<PracticePage />);
     const keyName = screen.getByText(
@@ -69,7 +83,7 @@ describe("PracticePage", () => {
     });
   });
 
-  it("accepts physical key codes even when an input method is composing", async () => {
+  it("ignores key events while an input method is composing", async () => {
     render(<PracticePage />);
     const keyName = screen.getByText(
       (content, element) => element?.tagName === "STRONG" && keyboardKeys.some((key) => key.keyName === content),
@@ -82,7 +96,7 @@ describe("PracticePage", () => {
       isComposing: true,
     });
 
-    expect(await screen.findByText("正确！")).toBeInTheDocument();
+    expect(screen.queryByText("正确！")).not.toBeInTheDocument();
   });
 
   it("receives keyboard input without requiring focus on the practice card", async () => {
