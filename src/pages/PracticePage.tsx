@@ -22,6 +22,7 @@ export function PracticePage() {
   const [lastAnswer, setLastAnswer] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
+  const [completedKeys, setCompletedKeys] = useState(0);
   const session = usePracticeSessionStore((state) => state.session);
   const startSession = usePracticeSessionStore((state) => state.startSession);
   const updateInput = usePracticeSessionStore((state) => state.updateInput);
@@ -30,6 +31,20 @@ export function PracticePage() {
   useEffect(() => {
     startSession(`${EXERCISE_PREFIX}${question.key}`);
   }, [question.key, startSession]);
+
+  useEffect(() => {
+    let cancelled = false;
+    attemptRepository.listByLesson(LESSON_ID).then((attempts) => {
+      if (cancelled) return;
+      const knownKeys = new Set(
+        attempts.filter((attempt) => attempt.isCorrect).map((attempt) => attempt.exerciseId),
+      );
+      setCompletedKeys(knownKeys.size);
+    }).catch(() => {
+      if (!cancelled) setSaveError("无法读取本地学习进度。");
+    });
+    return () => { cancelled = true; };
+  }, []);
 
   async function submitAnswer(letter: string) {
     if (answerState !== null || isSaving) return;
@@ -67,6 +82,7 @@ export function PracticePage() {
           .filter((attempt) => attempt.isCorrect)
           .map((attempt) => attempt.exerciseId),
       );
+      setCompletedKeys(correctlyAnswered.size);
       const mastered = correctlyAnswered.size === keyboardKeys.length;
       const now = Date.now();
 
@@ -127,10 +143,27 @@ export function PracticePage() {
         className="practice-card"
         onKeyDown={handleKeyDown}
         tabIndex={0}
+        autoFocus
       >
         <div className="practice-meta">
           <span>86 版 · 键位识别</span>
           <span>{progressLabel}</span>
+        </div>
+        <div className="practice-progress" aria-label="键位掌握进度">
+          <div className="practice-progress-label">
+            <span>已认识键位</span>
+            <strong>{completedKeys} / {keyboardKeys.length}</strong>
+          </div>
+          <div
+            className="practice-progress-track"
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={keyboardKeys.length}
+            aria-valuenow={completedKeys}
+            aria-label="已正确识别的不同键位数量"
+          >
+            <span style={{ width: `${(completedKeys / keyboardKeys.length) * 100}%` }} />
+          </div>
         </div>
 
         <div className="practice-prompt">
