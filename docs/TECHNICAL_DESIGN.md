@@ -238,6 +238,17 @@ Zustand 仅管理确实需要跨组件共享的客户端状态，例如当前课
 
 掌握阈值、答题评分和错题规则应集中在领域/应用服务中，不允许组件各自实现。
 
+## 8.1 当前 Store 实现边界
+
+当前使用 `usePracticeSessionStore` 管理单个临时练习会话，状态仅包含练习 ID、输入内容、会话状态和时间戳。
+
+- `startSession`：开始一个练习会话，并清空上一次输入。
+- `updateInput`：仅在会话处于 active 状态时更新输入。
+- `completeSession`：结束活动会话；重复完成不会覆盖首次完成时间。
+- `clearSession`：清除临时会话。
+
+Store 不持久化到 localStorage，也不直接读写 IndexedDB。答题记录、错题和课程进度仍由 Repository 管理。输入正确性判断、评分和掌握状态计算不属于 Store。
+
 ## 9. 测试策略
 
 ### 单元测试
