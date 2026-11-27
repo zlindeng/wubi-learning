@@ -19,6 +19,7 @@ function chooseQuestion(previousKey?: string): KeyboardKey {
 export function PracticePage() {
   const [question, setQuestion] = useState(() => chooseQuestion());
   const [answerState, setAnswerState] = useState<AnswerState>(null);
+  const [lastAnswer, setLastAnswer] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
   const session = usePracticeSessionStore((state) => state.session);
@@ -34,6 +35,7 @@ export function PracticePage() {
     if (answerState !== null || isSaving) return;
 
     const normalized = letter.toUpperCase();
+    setLastAnswer(normalized);
     const isCorrect = normalized === question.key;
     setAnswerState(isCorrect ? "correct" : "incorrect");
     setIsSaving(true);
@@ -104,6 +106,7 @@ export function PracticePage() {
   function nextQuestion() {
     setQuestion((current) => chooseQuestion(current.key));
     setAnswerState(null);
+    setLastAnswer("");
     setSaveError("");
   }
 
@@ -150,7 +153,7 @@ export function PracticePage() {
         {answerState === "incorrect" && (
           <div className="practice-feedback incorrect" role="status">
             <XCircle size={20} />
-            <div><strong>再记一下</strong><span>{question.keyName} 对应的是 {question.key} 键，你按下的是 {session?.currentInput || "其他键"}。</span></div>
+            <div><strong>再记一下</strong><span>{question.keyName} 对应的是 {question.key} 键，你按下的是 {lastAnswer || "其他键"}。</span></div>
           </div>
         )}
 
