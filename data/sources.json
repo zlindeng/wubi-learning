@@ -98,6 +98,58 @@
       "projectUse": "exclude_from_base_86",
       "verificationStatus": "candidate",
       "notes": "README says this modifies traditional 86 and adds traditional-character roots. Not a clean traditional 86 baseline."
+    },
+    {
+      "id": "S006",
+      "title": "五笔字根表_86版25键字根助记与一级简码",
+      "authors": [],
+      "publisher": "0564bbs.cn",
+      "edition": "online reference; accessed 2026-11-27",
+      "url": "https://www.0564bbs.cn/wubi/roots/",
+      "sourceType": "online_learning_reference",
+      "scope": [
+        "86 root-key candidate comparison",
+        "mnemonic comparison",
+        "key layout cross-check"
+      ],
+      "licenseStatus": "site content redistribution rights not established",
+      "projectUse": "candidate_comparison_only",
+      "verificationStatus": "candidate",
+      "notes": "页面明确标注86版并列出25键常见字根；属于在线教学资料，不作为权威字根全集或授权数据源。"
+    },
+    {
+      "id": "S007",
+      "title": "五笔86字根表：25键分区图与常用字根",
+      "authors": [],
+      "publisher": "Benber",
+      "edition": "online learning material; accessed 2026-11-27",
+      "url": "https://wubi.benber.net/guide/roots",
+      "sourceType": "online_learning_reference",
+      "scope": [
+        "common root-form comparison",
+        "teaching distinction between root keys and level-1 codes"
+      ],
+      "licenseStatus": "site content redistribution rights not established",
+      "projectUse": "candidate_comparison_only",
+      "verificationStatus": "candidate",
+      "notes": "页面明确说明所列为入门常用形体，不宣称穷尽所有变体；可用于发现差异，不可视为完整字根清单。"
+    },
+    {
+      "id": "S008",
+      "title": "86版五笔字根表与助记口诀",
+      "authors": [],
+      "publisher": "千千秀字",
+      "edition": "online reference; accessed 2026-11-27",
+      "url": "https://www.qqxiuzi.cn/zh/wubi.htm",
+      "sourceType": "online_learning_reference",
+      "scope": [
+        "86 mnemonic reference",
+        "root-key concept and keyboard chart explanation"
+      ],
+      "licenseStatus": "site content redistribution rights not established",
+      "projectUse": "mnemonic_cross_check_only",
+      "verificationStatus": "candidate",
+      "notes": "页面给出86版五区键位与助记口诀，说明键名和同键一级字根概念；不单独作为完整字根数据源。"
     }
   ],
   "policy": "Candidate sources are not automatically approved for data extraction or redistribution."
