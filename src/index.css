@@ -163,3 +163,38 @@ h1 { margin-bottom: 9px; color: #18243a; font-size: clamp(25px, 3vw, 32px); lett
 @media (max-width: 650px) {
   .placeholder-card { min-height: 280px; padding: 26px 20px; }
 }
+
+
+.practice-card {
+  max-width: 760px;
+  padding: 28px;
+  border: 1px solid #e8edf4;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 5px 24px rgba(26, 44, 78, .035);
+  outline: none;
+}
+.practice-card:focus-visible { box-shadow: 0 0 0 3px rgba(49, 92, 206, .16); }
+.practice-meta { display: flex; justify-content: space-between; gap: 12px; color: #8a96a8; font-size: 11px; }
+.practice-prompt { display: grid; justify-items: center; gap: 12px; padding: 54px 12px 42px; }
+.practice-prompt-label { color: #8491a4; font-size: 12px; }
+.practice-prompt strong { color: #263653; font-size: clamp(76px, 12vw, 112px); font-weight: 750; line-height: 1.1; }
+.practice-prompt > span:last-child { color: #63738d; font-size: 12px; }
+.practice-answer-hint { display: flex; align-items: center; justify-content: center; gap: 12px; color: #8793a5; font-size: 11px; }
+.practice-answer-hint kbd { min-width: 52px; padding: 7px 10px; border: 1px solid #e4e9f1; border-radius: 6px; color: #526176; background: #f8f9fc; font: 600 11px ui-monospace, monospace; text-align: center; }
+.practice-instruction { margin: 30px 0 0; color: #9aa5b5; font-size: 11px; text-align: center; }
+.practice-feedback { display: flex; align-items: center; gap: 11px; margin-top: 28px; padding: 15px 16px; border-radius: 9px; }
+.practice-feedback > div { display: grid; gap: 4px; }
+.practice-feedback strong { font-size: 13px; }
+.practice-feedback span { font-size: 11px; }
+.practice-feedback.correct { color: #287a58; background: #eef8f3; }
+.practice-feedback.incorrect { color: #a85b50; background: #fff3f1; }
+.practice-next { display: flex; gap: 8px; align-items: center; margin: 24px auto 0; border: 0; cursor: pointer; }
+.practice-next:disabled { opacity: .65; cursor: wait; }
+.practice-error { margin: 14px 0 0; color: #b45349; font-size: 11px; }
+.practice-footnote { max-width: 760px; margin: 16px 0 0; color: #9aa5b5; font-size: 10px; line-height: 1.7; }
+@media (max-width: 650px) {
+  .practice-card { padding: 20px 16px; }
+  .practice-prompt { padding: 42px 8px 34px; }
+  .practice-answer-hint { flex-direction: column; }
+}
