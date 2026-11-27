@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wubi-learning.example/schema/character-code.schema.json",
+  "title": "Wubi 86 character code record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "version",
+    "character",
+    "code",
+    "codeType",
+    "sourceIds",
+    "verification"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^charcode-[a-z0-9-]+$"
+    },
+    "version": {
+      "const": "86"
+    },
+    "character": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2
+    },
+    "code": {
+      "type": "string",
+      "pattern": "^[A-Y]{1,4}$"
+    },
+    "codeType": {
+      "enum": [
+        "key_name",
+        "character_root",
+        "level1",
+        "level2",
+        "level3",
+        "full"
+      ]
+    },
+    "rootIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^root-[a-z0-9-]+$"
+      }
+    },
+    "decomposition": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "order",
+          "rootId"
+        ],
+        "properties": {
+          "order": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "rootId": {
+            "type": "string",
+            "pattern": "^root-[a-z0-9-]+$"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "lastStroke": {
+      "enum": [
+        "horizontal",
+        "vertical",
+        "撇",
+        "捺",
+        "折"
+      ]
+    },
+    "structure": {
+      "enum": [
+        "left_right",
+        "up_down",
+        "other"
+      ]
+    },
+    "identificationCode": {
+      "type": "string",
+      "pattern": "^[A-Y]$"
+    },
+    "explanation": {
+      "type": "string"
+    },
+    "sourceIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^S[0-9]{3,}$"
+      }
+    },
+    "verification": {
+      "$ref": "#/$defs/verification"
+    }
+  },
+  "$defs": {
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "draft",
+            "needs_review",
+            "verified",
+            "rejected"
+          ]
+        },
+        "reviewedBy": {
+          "type": "string"
+        },
+        "reviewedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
