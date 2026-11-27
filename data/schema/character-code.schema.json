@@ -1,6 +1,5 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://wubi-learning.example/schema/character-code.schema.json",
   "title": "Wubi 86 character code record",
   "type": "object",
   "additionalProperties": false,
