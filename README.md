@@ -65,7 +65,7 @@ npm test
 npm run build
 ```
 
-当前工程已建立 Vite + React + TypeScript strict 基础和键盘认知原型。首次安装后请提交生成的 `package-lock.json`，确保依赖解析可复现。
+当前工程已建立 Vite + React + TypeScript strict 基础、真实页面路由和键盘认知原型。未完成的功能页面以空状态呈现。首次安装后请提交生成的 `package-lock.json`，确保依赖解析可复现。
 
 ## 设计约束
 
